@@ -1,0 +1,22 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "euromilregister";
+
+package euromil;
+
+// The euromil service definition.
+service Euromil {
+  // Sends a greeting
+  rpc RegisterEuroMil (RegisterRequest) returns (RegisterReply);
+}
+
+// The request message containing the Euromil key and the digital check ID.
+message RegisterRequest {
+  string key = 1;
+  string checkid = 2;
+}
+
+// The response message containing the success or failure of the registration
+message RegisterReply {
+  string message = 1;
+}
