@@ -51,12 +51,12 @@ namespace euromilregister.Services
             {
                 if (i < 5)
                 {
-                    if (!Int32.TryParse(splitKey[i], out numKey[i]))
+                    if (!Int32.TryParse(splitKey[i], out numKey[i]) || numKey[i] <= 0 || numKey[i] > 50)
                         return false;
                 }
                 else
                 {
-                    if (!Int32.TryParse(splitKey[i], out numStar[i - 5]))
+                    if (!Int32.TryParse(splitKey[i], out numStar[i - 5]) || numStar[i-5] <= 0 || numStar[i-5] > 12)
                         return false;
                 }
             }

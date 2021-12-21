@@ -23,12 +23,6 @@ namespace euromilregister
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    //webBuilder.ConfigureKestrel(options =>
-                    //{
-                    //    options.Listen(IPAddress.Any, 80, o => o.Protocols = HttpProtocols.Http1AndHttp2);
-                    //    options.Listen(IPAddress.Any, 5003, o => o.Protocols = HttpProtocols.Http2);
-                    //});
-
                     webBuilder.UseStartup<Startup>();
                 });
     }
