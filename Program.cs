@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace euromilregister
@@ -21,6 +23,12 @@ namespace euromilregister
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    //webBuilder.ConfigureKestrel(options =>
+                    //{
+                    //    options.Listen(IPAddress.Any, 80, o => o.Protocols = HttpProtocols.Http1AndHttp2);
+                    //    options.Listen(IPAddress.Any, 5003, o => o.Protocols = HttpProtocols.Http2);
+                    //});
+
                     webBuilder.UseStartup<Startup>();
                 });
     }
