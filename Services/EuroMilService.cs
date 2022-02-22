@@ -21,10 +21,15 @@ namespace euromilregister.Services
 
             string replyMessage = "";
 
-            if (!ValidateKey(request.Key) || !ValidateId(request.Checkid))
+            if (!ValidateKey(request.Key))
             {
-                replyMessage = "Error. Key or CheckID is not Valid.";
-                _logger.LogError("Error.Key or CheckID is not Valid.");
+                replyMessage = "Error. Key is not Valid.";
+                _logger.LogError("Error. Key is not Valid.");
+            }
+            else if (!ValidateId(request.Checkid))
+            {
+                replyMessage = "Error. CheckID is not Valid.";
+                _logger.LogError("Error. CheckID is not Valid.");
             }
             else
             {
@@ -56,7 +61,7 @@ namespace euromilregister.Services
                 }
                 else
                 {
-                    if (!Int32.TryParse(splitKey[i], out numStar[i - 5]) || numStar[i-5] <= 0 || numStar[i-5] > 12)
+                    if (!Int32.TryParse(splitKey[i], out numStar[i - 5]) || numStar[i - 5] <= 0 || numStar[i - 5] > 12)
                         return false;
                 }
             }
@@ -71,7 +76,7 @@ namespace euromilregister.Services
 
         private bool ValidateId(string checkid)
         {
-            if (checkid.Length != 8 || !Double.TryParse(checkid, out _))
+            if (checkid.Length != 16 || !Double.TryParse(checkid, out _))
             {
                 return false;
             }
